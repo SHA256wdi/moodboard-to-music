@@ -1,8 +1,10 @@
 # **Pinterest PM Proposal: Enhancing Pinterest Boards with Spotify Playlists**
 
 **Product Area:** Visual Discovery & Personalization
+
 **Prepared by:** Shawdi
-**Date:** \June 23 2025
+
+**Date:** June 23 2025
 
 ---
 
