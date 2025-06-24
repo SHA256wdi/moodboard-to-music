@@ -10,7 +10,7 @@
 
 ### **Problem Statement**
 
-Pinterest boards are emotional, aesthetic-driven collections — users curate them to represent moods, aspirations, or moments (e.g. *Coastal Summer*, *Dark Academia*, *Dream Apartment*). However, these experiences are purely visual. There’s currently no way for users to extend a board’s emotional tone into other sensory dimensions, like sound. This represents a missed opportunity for deeper immersion and engagement.
+Pinterest boards are emotional, aesthetic-driven collections; Users curate them to represent moods, aspirations, or moments (e.g. *Coastal Summer*, *Dark Academia*, *Dream Apartment*). However, these experiences are purely visual. There’s currently no way for users to extend a board’s emotional tone into other sensory dimensions, like sound. This represents a missed opportunity for deeper immersion and engagement.
 
 ---
 
@@ -77,7 +77,7 @@ Launch an MVP Chrome extension and companion web app that enables users to gener
 
 * Native Pinterest feature: “Add a Vibe” to boards
 * Collaborations with Spotify or licensing of ambient libraries
-* AI model refinement based on board categories (fashion, travel, design)
+* AI-powered Image-to-Music Translator
 * Personalized replays or daily board radio
 
 ---
