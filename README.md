@@ -1,33 +1,39 @@
-# moodboard-to-music 🎵
+# Moodboard-to-Music 
 
-This is a personal project that generates a Spotify playlist based on the aesthetic or "vibe" of a Pinterest board. It analyzes images from a Pinterest board using computer vision models and maps the results to mood-based audio features or genres on Spotify.
+This is a personal project that generates a Spotify playlist based on the aesthetic or "vibe" of a Pinterest board or image collection. It analyzes images using computer vision and language models, translates visual mood into music genres, and builds a matching playlist.
 
 ## Goal
 
-To explore how moodboards—especially those curated on Pinterest—can translate into sound. This is part of an ongoing interest in creativity, discovery, and building bridges between platforms that evoke emotion in different media (visual vs. auditory).
+To explore how moodboards—especially those curated on Pinterest—can translate into sound. This project bridges platforms that evoke emotion in different media (visual vs. auditory), and is part of my broader interest in creativity, AI, and cross-sensory product design.
 
 ## Features
 
-- Pulls Pinterest board content (image URLs, titles, etc.)
-- Uses image analysis (via CLIP or Google Vision) to identify mood tags
-- Maps tags to Spotify genres and audio features
-- Generates a mood-matching Spotify playlist
+- Accepts image uploads from Pinterest boards or local files  
+- Uses CLIP (or Google Vision) to extract aesthetic tags from visuals  
+- Maps tags to genres and moods using GPT-4 + Last.fm’s genre taxonomy  
+- Queries Spotify to generate and preview a matching playlist  
 
 ## Stack
 
-- Pinterest API (for board and pin data)
-- Spotify API (for playlist creation and track recommendations)
-- Python (Flask or Streamlit for basic interface)
-- OpenAI CLIP / Google Vision API (for tag extraction from images)
+- CLIP (OpenAI) or Google Vision — image-to-tag extraction  
+- GPT-4 / Claude — tag-to-genre translation  
+- Last.fm API — genre-based music lookup  
+- Spotify API — playlist creation and playback  
+- Streamlit — lightweight interactive UI  
+- Python — end-to-end logic and API orchestration  
 
 ## Status
 
-In development — currently building out the MVP and experimenting with tag-to-music mappings.
+Currently in development. The MVP accepts image uploads, extracts aesthetic tags, and generates Spotify playlists based on emotional tone. Refining tag mappings, playlist quality, and UI polish.
 
 ## About Me
 
-Hi, I'm Shawdi — a creative technologist with a background in software engineering, digital media, community organizing, and a love for using and building products. This project is part of a personal exploration into product management and cross-platform creativity.
+Hi, I'm Shawdi — a creative technologist with a background in software engineering, digital media, and community organizing. I enjoy building emotionally resonant tools and products that live between media, accessibility, and technology. This project is part of my exploration into product management and cross-platform creativity.
 
-## 🔒 Privacy Policy
+## Privacy Policy
 
-See [privacy.md](./privacy.md) for details.
+This app does not store or share any uploaded images, Spotify account data, or personal information. All processing is local or API-based, and user data is discarded after session use.
+
+If the app is deployed publicly, OAuth tokens are used only to authorize playlist creation via Spotify and are not logged or stored.
+
+For questions, feel free to reach out.
