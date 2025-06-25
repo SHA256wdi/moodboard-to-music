@@ -6,16 +6,16 @@ This sprint plan outlines each day’s technical and product milestones to deliv
 
 ## Day 1 – Image Input & Tag Extraction
 
-- Set up project repo and virtual environment (e.g. with Poetry or pipenv)
-- Implement local image upload functionality via Streamlit
-- Load and test OpenAI’s CLIP model on sample images
-- Output top tags for each image with associated cosine similarity scores
-- Save and display CLIP tags in UI for debugging
-- Research CLIP vs. Google Vision output comparison for fallback strategies
+[X] Set up project repo and virtual environment (with pipenv)
+[X] Implement local image upload functionality via Streamlit
+[X] Load and test OpenAI’s CLIP model on sample images
+[X] Output top tags for each image with associated cosine similarity scores
+[] Save and display CLIP tags in UI for debugging
+[X] Research CLIP vs. Google Vision output comparison for fallback strategies
 
 Deliverables:
-- Working tag extractor from uploaded images
-- Basic Streamlit UI with file input and tag display
+[X] Working tag extractor from uploaded images
+[X] Basic Streamlit UI with file input and tag display
 
 ---
 
