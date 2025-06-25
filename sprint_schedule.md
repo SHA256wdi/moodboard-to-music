@@ -1,142 +1,100 @@
-# Project Proposal: Visual Moodboard to Spotify Playlist Generator
+# Moodboard Playlist MVP – Detailed 1-Week Development Schedule
 
-**Sprint Duration:** 7 Days  
-**Product Manager and Engineer:** Shawdi  
-**Product Area:** Creative Tools, Mood Personalization, Cross-Platform Discovery
+This sprint plan outlines each day’s technical and product milestones to deliver a functional prototype that transforms Pinterest board aesthetics into Spotify playlists via CLIP, GPT, Last.fm, and Spotify APIs.
 
 ---
 
-## Sprint Goal
+## Day 1 – Image Input & Tag Extraction
 
-Deliver a functional MVP that allows a user to upload visual assets (inspired by Pinterest boards), automatically extract emotional tags using CLIP, map these to audio characteristics, and generate a curated Spotify playlist reflecting the board’s aesthetic.
+- Set up project repo and virtual environment (e.g. with Poetry or pipenv)
+- Implement local image upload functionality via Streamlit
+- Load and test OpenAI’s CLIP model on sample images
+- Output top tags for each image with associated cosine similarity scores
+- Save and display CLIP tags in UI for debugging
+- Research CLIP vs. Google Vision output comparison for fallback strategies
 
----
-
-## Sprint Schedule and Deliverables
-
-### Day 1 – Kickoff and Input Pipeline
-
-**Objective:** Establish the image ingestion flow and frontend interface.
-
-**Tasks:**
-- Finalize user journey (Upload → Tag → Playlist → Listen)
-- Set up development environment (Python, Streamlit, Spotipy)
-- Implement image uploader and board title input
-- Preview uploaded images in UI
-
-**Deliverables:**
-- Basic Streamlit app with upload capability
-- Working input form for board name
-- Draft of user interaction flow
+Deliverables:
+- Working tag extractor from uploaded images
+- Basic Streamlit UI with file input and tag display
 
 ---
 
-### Day 2 – Tagging Engine (CLIP Integration)
+## Day 2 – Tag Normalization & Semantic Mapping (GPT)
 
-**Objective:** Integrate CLIP model to extract visual tags from user-uploaded images.
+- Create dataset of CLIP tags + aesthetic descriptors
+- Prompt GPT-4 to translate tags into musical moods, genres, and energy/valence scores
+- Test different prompt templates: single tag, multiple tags, weighted tags
+- Save mappings to local dictionary or .json for faster reuse
+- Implement GPT fallback: if tag not in static map, call GPT live
 
-**Tasks:**
-- Load and run CLIP model via OpenAI or Hugging Face
-- Extract top N semantic tags from each image
-- Store and de-duplicate tag set per board
-- Output visual tags in frontend
-
-**Deliverables:**
-- Operational tagging function
-- Sample outputs for 3–5 test images
-- Display of tags in user interface
+Deliverables:
+- Working tag-to-genre GPT mapping layer
+- Static fallback dictionary of 30–50 common tag mappings
 
 ---
 
-### Day 3 – Tag-to-Music Mapping System
+## Day 3 – Music Discovery Layer (Last.fm + Spotify)
 
-**Objective:** Translate visual tags into Spotify-compatible audio features.
+- Use GPT/CLIP output genre tags to query `tag.getTopTracks` from Last.fm
+- Collect track metadata: title, artist, tags, popularity
+- Filter Last.fm results for top 5–10 tracks per tag
+- Use Spotify API to cross-reference and validate track availability
+- Create function to compile final Spotify tracklist from cleaned results
 
-**Tasks:**
-- Build `tag_to_spotify` dictionary mapping tags to genre, valence, and energy
-- Aggregate mood values across all tags for a board
-- Generate a normalized audio profile (genre list + mood vector)
-
-**Deliverables:**
-- Tag mapping module
-- Function to convert tag list to music parameters
-- Debugged sample mappings for 20+ tags
+Deliverables:
+- Pipeline from aesthetic tags → validated Spotify track URIs
 
 ---
 
-### Day 4 – Spotify Integration
+## Day 4 – Playlist Generation & Authentication
 
-**Objective:** Authenticate user and generate playlists using Spotify API.
+- Set up Spotify developer app and get OAuth working for playlist creation
+- Build backend route to create and populate Spotify playlists
+- Add option for user to name their playlist and make it public/private
+- Add error handling for duplicates, auth errors, and bad tracks
+- Log and store playlist links with original board or tag data
 
-**Tasks:**
-- Authenticate with Spotify using Spotipy and OAuth2
-- Generate playlist with Spotify Recommendations API
-- Name and save playlist to user’s Spotify account
-- Display playlist link or embed in UI
-
-**Deliverables:**
-- End-to-end playlist creation flow
-- Working Spotify playlist URL per test case
-- Playlist customization field (optional)
+Deliverables:
+- End-to-end playlist creation based on image upload
+- Playlist link and preview embedded in frontend
 
 ---
 
-### Day 5 – User Experience and Error Handling
+## Day 5 – UI & Usability Polish
 
-**Objective:** Refine the UI and improve resilience of application.
+- Add loading states, error messages, and UI feedback to Streamlit app
+- Display extracted tags, selected genres, and final playlist in clean format
+- Add simple customization: remove/edit tags before playlist is built
+- Include toggle to use static tag map vs. GPT output
+- Conduct quick user test and log feedback
 
-**Tasks:**
-- Add mood summary display
-- Refactor layout for clarity and visual appeal
-- Add loading indicators and exception handling
-- Ensure fallback for unmapped tags
-
-**Deliverables:**
-- Finalized frontend design
-- Error-handling for all major operations
-- Responsive UX across test flows
+Deliverables:
+- Fully functional UI with smooth upload → playlist generation flow
 
 ---
 
-### Day 6 – Deployment and QA
+## Day 6 – Final QA, Documentation, and Demo
 
-**Objective:** Deploy working prototype and conduct testing.
+- Write a clean README with setup instructions, dependencies, and demo flow
+- Record a 1–2 min demo video (screen share) showing user journey
+- Push project to GitHub with clear structure: `/app`, `/data`, `/scripts`, `/assets`
+- Add sample board images + expected outputs to repo for reproducibility
+- Log known issues and potential improvements
 
-**Tasks:**
-- Deploy application to hosting platform (e.g., Streamlit Cloud)
-- Conduct QA with multiple image boards and tag varieties
-- Validate Spotify playlist performance and response time
-- Collect qualitative user feedback (minimum 2 testers)
-
-**Deliverables:**
-- Live MVP deployment
-- QA checklist completed
-- Adjusted configurations for deployment stability
+Deliverables:
+- Public GitHub repo with all code, documentation, and test assets
 
 ---
 
-### Day 7 – Documentation and Demo Packaging
+## Day 7 – Marketing & PM Materials
 
-**Objective:** Finalize project materials for portfolio and case study.
+- Refactor proposal.md and sprint_schedule.md with final architecture and learnings
+- Write short case-study style writeup of build process and decisions
+- Optionally: design landing page or publish to Streamlit Cloud for sharing
+- Reach out to Pinterest contact or mentors with personalized project summary
+- Add project to portfolio website with screenshots, demo, and short summary
 
-**Tasks:**
-- Write technical README for GitHub
-- Draft case study overview (problem, solution, result)
-- Record 2–3 minute walkthrough demo
-- Add to personal website and PM project portfolio
-
-**Deliverables:**
-- GitHub repository with documentation
-- Loom or screen-recorded demo
-- Optional PM case study deck
-
----
-
-## Success Metrics for MVP
-
-- Deployment and Spotify API integration fully functional
-- Playlist generation time under 15 seconds
-- Image-to-tag and tag-to-music mapping match user expectation
-- At least 2 user testers provide positive qualitative feedback
-- Playlist engagement (save or listen rate) ≥ 50% across tests
+Deliverables:
+- Portfolio-ready assets and documentation
+- Outreach material for PM case or job apps
 
