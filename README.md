@@ -1,14 +1,14 @@
 # Moodboard-to-Music 
 
-This is a personal project that generates a Spotify playlist based on the aesthetic or "vibe" of a Pinterest board or image collection. It analyzes images using computer vision and language models, translates visual mood into music genres, and builds a matching playlist.
-
+Moodboard-to-Music is an image-to-audio pipeline that generates Spotify playlists from uploaded images. It uses CLIP to extract aesthetic tags, maps them to Last.fm genres, and creates playlists that reflect the mood or vibe of the image.
+ 
 ## Goal
 
-To explore how moodboards—especially those curated on Pinterest—can translate into sound. This project bridges platforms that evoke emotion in different media (visual vs. auditory), and is part of my broader interest in creativity, AI, and cross-sensory product design.
+To explore the connection between an image and sound. This project bridges platforms that evoke emotion in different media (visual vs. auditory), and is part of my broader interest in creativity, AI, and cross-sensory product design.
 
 ## Features
 
-- Accepts image uploads from Pinterest boards or local files  
+- Accepts image uploads from local files  
 - Uses CLIP (or Google Vision) to extract aesthetic tags from visuals  
 - Maps tags to genres and moods using GPT-4 + Last.fm’s genre taxonomy  
 - Queries Spotify to generate and preview a matching playlist  
